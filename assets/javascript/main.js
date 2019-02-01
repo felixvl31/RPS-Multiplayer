@@ -262,23 +262,37 @@ var choseWinner = function(){
 };
 
 //Chat
+var scrolled = false;
+function updateScroll(){
+  if(!scrolled){
+    var element = document.getElementById("chat");
+    element.scrollTop = element.scrollHeight;
+  }
+}
+
+$("#chat").on('scroll', function(){
+    scrolled=true;
+});
+
 $("#chatBtn").on("click",function(){
   var message = $("#chatInput").val();
   $("#chatInput").val("");
   if(namePlayer == undefined){
-      database.ref().child("chat").push({
-          message: "Viewer: " + message
-      });
+    database.ref().child("chat").push({
+      message: "Viewer: " + message
+    });
   }else{
-      database.ref().child("chat").push({
-          message: namePlayer + ": " + message
-      });
+    database.ref().child("chat").push({
+      message: namePlayer + ": " + message
+    });
   }
 });
 
 database.ref().child("chat").orderByKey().on("child_added",function(snapshot) {
   var newMessage = $("<p>").html(snapshot.val().message);
   $("#chat").append(newMessage);
+  setInterval(updateScroll,1000);
+  scrolled = false;
 });
 
 

@@ -1,4 +1,94 @@
 body {
   background-image: url("../images/pattern.png");
+  font-family: 'Handlee', cursive;
+  font-weight: 900;
+}
 
+#header{
+  font-size: 80px;
+  margin: 20px 0px;
+}
+
+#P1Name,#P2Name,#messageDiv{
+  font-size: 30px;
+}
+#statusP1,#statusP2{
+  font-size:20px;
+}
+#messageDiv{
+  margin:20px 0px;
+}
+
+#FinalResults{
+  font-size: 30px;
+  color: #a31413;
+}
+
+#chatlabel{
+  margin:40px 0px 0px 5px;
+}
+#chat {
+  overflow: auto;
+  height: 200px;
+  background-color: #1e1e1e;
+  color: #fff;
+  text-align: left;
+  opacity: .8;
+  border-radius: 15px;
+  border: 5px white solid;
+  font-family: 'Inconsolata', monospace;
+}
+
+#chatInput{
+  color:black;
+  height:60px;
+  resize: none;
+}
+
+input,#chatInput,.btn{
+  font-family: 'Inconsolata', monospace;
+}
+
+.P1,.P2{
+  height:160px;
+}
+
+  .attack{
+    height:96px;
+  }
+
+/* Media Query */
+@media only screen and (max-width: 580px) {
+  #header{
+  font-size: 30px;
+  margin: 5px 0px;
+  }
+  #P1Name,#P2Name,#messageDiv{
+    font-size: 20px;
+  }
+  #statusP1,#statusP2{
+    font-size:15px;
+  }
+  #messageDiv{
+    margin:10px 0px;
+  }
+  #FinalResults{
+  font-size: 20px;
+  color: #a31413;
+  }
+  #chatlabel{
+    margin:20px 0px 0px 5px;
+  }
+  #chat {
+  height: 130px;
+  }
+  #chatInput{
+    height:30px;
+  }
+  .P1,.P2{
+  height:250px;
+  }
+  .attack{
+    height:48px;
+  }
 }

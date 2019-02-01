@@ -6,60 +6,63 @@
   <link rel="stylesheet" href="assets/css/reset.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Handlee|Inconsolata:700" rel="stylesheet">
   <title>Rock Paper Scissors - Multiplayer</title>
 </head>
 <body>
 
-  <div class="container text-center">
-    <h1>Rock Paper Scissors</h1>
+  <div class="container text-center" >
+    <h1 id="header">Rock Paper Scissors</h1>
 
     <div id="topDiv">
       <div id="messageDiv"></div>
-      <form class="form-inline">
-        <div id="nameInputDiv">
-          <input type="text" placeholder="Name" id="playerNameInpt" class="form-control mb-2 mr-sm-2 mb-sm-0">
-          <button type="submit" id="playerNameBtn" class="btn btn-primary">Enter Name</button>
+      <form class="form-inline row">
+        <div class="col" id="nameInputDiv">
+          <input type="text" placeholder="Name" id="playerNameInpt" class="form-control ">
+          <button type="submit" id="playerNameBtn" class="btn btn-outline-dark">Enter Name</button>
         </div>
       </form>
     </div>
 
      <div class="row">
-      <div class="col-4">
+      <div class="P1 col-4">
         <div id="P1Name">Waiting for P1 to join</div>
         <div id="statusP1"></div>
         <div id="optionsP1" style="display: none">
-          <a class="item" data="rock"><img src="assets/images/rock.png" alt="rock"></a>
-          <a class="item" data="paper"><img src="assets/images/paper.png" alt="paper"></a>
-          <a class="item" data="scissors"><img src="assets/images/scissors.png" alt="scissors"></a>
+          <a class="item" data="rock"><img class="attack" src="assets/images/rock.png" alt="rock"></a>
+          <a class="item" data="paper"><img class="attack" src="assets/images/paper.png" alt="paper"></a>
+          <a class="item" data="scissors"><img class="attack" src="assets/images/scissors.png" alt="scissors"></a>
         </div>
         <div id="scoreP1"></div>
       </div>
 
-      <div id="FinalResults" class="middleBoxes col-4"></div>
+      <div id="FinalResults" class="col-4 align-self-center"></div>
 
-      <div class=" col-4">
+      <div class="P2 col-4">
         <div id="P2Name">Waiting for P2 to join</div>
         <div id="statusP2"></div>
         <div id="optionsP2" style="display: none">
-          <a class="item" data="rock"><img src="assets/images/rock.png" alt="rock"></a>
-          <a class="item" data="paper"><img src="assets/images/paper.png" alt="paper"></a>
-          <a class="item" data="scissors"><img src="assets/images/scissors.png" alt="scissors"></a>
+          <a class="item" data="rock"><img class="attack" src="assets/images/rock.png" alt="rock"></a>
+          <a class="item" data="paper"><img class="attack" src="assets/images/paper.png" alt="paper"></a>
+          <a class="item" data="scissors"><img class="attack" src="assets/images/scissors.png" alt="scissors"></a>
         </div>
         <div id="scoreP2"></div>
       </div>
     </div>
-
+  </div>
+  
+  <div class="container text-center" >
     <div class="row">
-      <label>Chat Section</label>
-      <div id="chat" class="col-xs-12"></div>
+      <label id="chatlabel">Chat Section</label>
+      <div id="chat" class="col-12"></div>
     </div>
 
     <div class="form-group">
-      <textarea class="form-control" id="chatInput" rows="3" placeholder="Type some abuse"></textarea>
+      <textarea class="form-control " id="chatInput" rows="3" placeholder="Type some abuse"></textarea>
     </div>
-    <button type="submit" class="btn btn-primary" id="chatBtn">Send Message</button>
-
+    <button type="submit" class="btn btn-outline-dark" id="chatBtn">Send Message</button>
   </div>
+  
 
 
 
