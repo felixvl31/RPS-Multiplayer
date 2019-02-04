@@ -5,31 +5,30 @@ body {
 }
 
 #header{
-  font-size: 80px;
-  margin: 20px 0px;
+  font-size: 65px;
+  margin: 15px 0px 10px;
 }
 
 #P1Name,#P2Name,#messageDiv{
-  font-size: 30px;
+  font-size: 25px;
 }
 #statusP1,#statusP2{
   font-size:20px;
 }
 #messageDiv{
-  margin:20px 0px;
+  margin:10px 0px;
 }
 
 #FinalResults{
   font-size: 30px;
   color: #a31413;
 }
-
 #chatlabel{
   margin:40px 0px 0px 5px;
 }
 #chat {
   overflow: auto;
-  height: 200px;
+  height: 180px;
   background-color: #1e1e1e;
   color: #fff;
   text-align: left;
@@ -38,24 +37,27 @@ body {
   border: 5px white solid;
   font-family: 'Inconsolata', monospace;
 }
-
 #chatInput{
   color:black;
   height:60px;
   resize: none;
 }
-
 input,#chatInput,.btn{
   font-family: 'Inconsolata', monospace;
 }
 
-.P1,.P2{
-  height:160px;
+.attack{
+  height:96px;
 }
 
-  .attack{
-    height:96px;
-  }
+#scoreP1c,#scoreP1t,#scoreP2c,#scoreP2t{
+  font-weight: 300;
+}
+
+h6{
+  font-weight: 900;
+  margin: 0px;
+}
 
 /* Media Query */
 @media only screen and (max-width: 580px) {
@@ -64,13 +66,13 @@ input,#chatInput,.btn{
   margin: 5px 0px;
   }
   #P1Name,#P2Name,#messageDiv{
-    font-size: 20px;
+    font-size: 18px;
   }
   #statusP1,#statusP2{
-    font-size:15px;
+    font-size:13px;
   }
   #messageDiv{
-    margin:10px 0px;
+    margin:5px 0px;
   }
   #FinalResults{
   font-size: 20px;
@@ -80,15 +82,18 @@ input,#chatInput,.btn{
     margin:20px 0px 0px 5px;
   }
   #chat {
-  height: 130px;
+    height: 110px;
   }
   #chatInput{
     height:30px;
   }
-  .P1,.P2{
-  height:250px;
-  }
   .attack{
     height:48px;
   }
+  h6{
+  font-size:15px;
+  }
+  #scoreP1c,#scoreP1t,#scoreP2c,#scoreP2t{
+  font-size: 13px;
+}
 }

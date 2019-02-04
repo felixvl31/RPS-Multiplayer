@@ -27,14 +27,18 @@ var P1 = {
   choice:"",
   wins:0 ,
   losses:0,
-  name:""
+  name:"",
+  tWins:0,
+  tLosses:0
 };
 
 var P2 = {
   choice:"",
   wins:0 ,
   losses:0,
-  name:""
+  name:"",
+  tWins:0,
+  tLosses:0
 };
 
 
@@ -79,12 +83,19 @@ phaseRef.on("value",function(snapshot){
     playersRef.once("value",function(snapshot){
       P1.wins = snapshot.val()["1"].wins;
       P2.wins = snapshot.val()["2"].wins;
+      P1.tWins = snapshot.val()["1"].tWins;
+      P2.tWins = snapshot.val()["2"].tWins;
       P1.losses = snapshot.val()["1"].losses;
       P2.losses = snapshot.val()["2"].losses;
+      P1.tLosses = snapshot.val()["1"].tLosses;
+      P2.tLosses = snapshot.val()["2"].tLosses;
     });
     $("#FinalResults").empty();
-    $("#scoreP1").html("Wins: " + P1.wins + " | Losses: " + P1.losses );
-    $("#scoreP2").html("Wins: " + P2.wins + " | Losses: " + P2.losses );
+    // $("#scoreP1").html("<strong>Current</strong> <br>"+"Wins: " + P1.wins + " | Losses: " + P1.losses+"<br>"+"<strong>Total</strong><br>"+"Wins: "+P1.tWins+" | Losses: "+P1.tLosses );
+    $("#scoreP1c").html("W: " + P1.wins  + " | L: " + P1.losses);
+    $("#scoreP1t").html("W: " + P1.tWins + " | L: " + P1.tLosses );
+    $("#scoreP2c").html("W: " + P2.wins  + " | L: " + P2.losses);
+    $("#scoreP2t").html("W: " + P2.tWins + " | L: " + P2.tLosses );
     if(playerNumber === 1) {
       // Show options to P1
       $("#messageDiv").text("Make your pick");
@@ -136,6 +147,8 @@ var determinePlayer = function(){
       playerNumber = 1;
       P1.wins = 0;
       P1.losses = 0;
+      P1.tWins = 0;
+      P1.tLosses = 0;
       $("#P1Name").empty();
       $("#P1Name").text(namePlayer);
       $("#nameInputDiv").css("display","none");
@@ -146,6 +159,8 @@ var determinePlayer = function(){
         name: namePlayer,
         wins: 0,
         losses: 0,
+        tWins:0,
+        tLosses:0
       });
     }
 
@@ -154,6 +169,8 @@ var determinePlayer = function(){
       playerNumber = 1;
       P1.wins = 0;
       P1.losses = 0;
+      P1.tWins = 0;
+      P1.tLosses = 0;
       $("#P1Name").empty();
       $("#P1Name").text(namePlayer);
       $("#messageDiv").text("Welcome " + namePlayer + ", you are Player #" + playerNumber);
@@ -163,6 +180,8 @@ var determinePlayer = function(){
         name: namePlayer,
         wins: 0,
         losses: 0,
+        tWins:0,
+        tLosses:0
       });
       phaseRef.set(1);
     }
@@ -172,6 +191,8 @@ var determinePlayer = function(){
       playerNumber = 2;
       P2.wins = 0;
       P2.losses = 0;
+      P2.tWins = 0;
+      P2.tLosses = 0;
       $("#P2Name").empty();
       $("#P2Name").text("Welcome " + namePlayer + ", you are Player #" + playerNumber);
       $("#messageDiv").text("Welcome " + namePlayer + ", you are Player #" + playerNumber);
@@ -181,6 +202,8 @@ var determinePlayer = function(){
         name: namePlayer,
         wins: 0,
         losses: 0,
+        tWins:0,
+        tLosses:0
       });
       phaseRef.set(1);
     }
@@ -230,20 +253,24 @@ var choseWinner = function(){
       winner = 1;
       winnerName = P1.name;
       playersRef.child("1").update({
-        wins: P1.wins + 1
+        wins: P1.wins + 1,
+        tWins:P1.tWins+1
       });
       playersRef.child("2").update({
-        losses: P2.losses + 1
+        losses: P2.losses + 1,
+        tLosses:P2.tLosses+1
       });
     }
     else if ((P1.choice === "rock") && (P2.choice === "paper")||(P1.choice === "scissors") && (P2.choice === "rock")||(P1.choice === "paper") && (P2.choice === "scissors")) {
       winner = 2;
       winnerName = P2.name;
       playersRef.child("2").update({
-        wins: P2.wins + 1
+        wins: P2.wins + 1,
+        tWins:P2.tWins+1
       });
       playersRef.child("1").update({
-        losses: P1.losses + 1
+        losses: P1.losses + 1,
+        tLosses:P1.tLosses+1
       });
     }
     else if (P1.choice === P2.choice) {
