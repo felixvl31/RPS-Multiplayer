@@ -1,8 +1,12 @@
 ## RPS-Multiplayer
-RPS-Multiplayer
+Rock-Paper-Scissor Multiplayer
 ***
 ## Description  
-Rock Paper Scissors multiplayer game hosted on Firebase  
+Rock-Paper-Scissors multiplayer game hosted on Firebase  
+***
+## Notes
+* Two players needed
+* Non players can see results and use the chat too 
 ***
 ## Libraries
 * [Firebase](https://console.firebase.google.com/)  
