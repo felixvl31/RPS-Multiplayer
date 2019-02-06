@@ -41,9 +41,7 @@ var P2 = {
   tLosses:0
 };
 
-
 phaseRef.onDisconnect().remove();
-
 
 //Display Player name
 playersRef.on("child_added",function(snapshot){
@@ -80,6 +78,7 @@ playersRef.on('child_removed', function(snapshot) {
 phaseRef.on("value",function(snapshot){
   var phase = snapshot.val();
   if(phase == 1){
+    //Get results from Firebase
     playersRef.once("value",function(snapshot){
       P1.wins = snapshot.val()["1"].wins;
       P2.wins = snapshot.val()["2"].wins;
@@ -91,7 +90,7 @@ phaseRef.on("value",function(snapshot){
       P2.tLosses = snapshot.val()["2"].tLosses;
     });
     $("#FinalResults").empty();
-    // $("#scoreP1").html("<strong>Current</strong> <br>"+"Wins: " + P1.wins + " | Losses: " + P1.losses+"<br>"+"<strong>Total</strong><br>"+"Wins: "+P1.tWins+" | Losses: "+P1.tLosses );
+    //Update scores
     $("#scoreP1c").html("W: " + P1.wins  + " | L: " + P1.losses);
     $("#scoreP1t").html("W: " + P1.tWins + " | L: " + P1.tLosses );
     $("#scoreP2c").html("W: " + P2.wins  + " | L: " + P2.losses);
@@ -126,7 +125,7 @@ phaseRef.on("value",function(snapshot){
       $("#optionsP1").css("display", "none");
     }
   }
-
+  //Choose Winner
   if(phase == 3){
     $("#optionsP2").css("display", "none");
     $("#statusP2").empty();
@@ -142,7 +141,7 @@ phaseRef.on("value",function(snapshot){
 var determinePlayer = function(){
   database.ref().once("value",function(snapshot){
     var numberOfPlayers = snapshot.child("players").numChildren();
-    // In case there are not Players
+    // In case there are no Players
     if(numberOfPlayers == 0){
       playerNumber = 1;
       P1.wins = 0;
@@ -208,7 +207,7 @@ var determinePlayer = function(){
       phaseRef.set(1);
     }
 
-    // 3rd Player
+    // 3rd Player (Viewer)
     else if(numberOfPlayers == 2){
       $("#messageDiv").text("Welcome " + namePlayer + ", you are Viewer");
       $("#nameInputDiv").css("display","none");
@@ -288,7 +287,7 @@ var choseWinner = function(){
   });
 };
 
-//Chat
+//Scroll function for chat
 var scrolled = false;
 function updateScroll(){
   if(!scrolled){
@@ -301,6 +300,7 @@ $("#chat").on('scroll', function(){
     scrolled=true;
 });
 
+//Chat
 $("#chatBtn").on("click",function(){
   var message = $("#chatInput").val();
   $("#chatInput").val("");
@@ -315,6 +315,7 @@ $("#chatBtn").on("click",function(){
   }
 });
 
+//Update from Firebase
 database.ref().child("chat").orderByKey().on("child_added",function(snapshot) {
   var newMessage = $("<p>").html(snapshot.val().message);
   $("#chat").append(newMessage);
