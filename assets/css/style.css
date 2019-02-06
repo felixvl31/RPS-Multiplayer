@@ -58,8 +58,25 @@ h6{
   font-weight: 900;
   margin: 0px;
 }
+.P1,.P2{
+  height:220px;
+}
 
 /* Media Query */
+
+@media only screen and (max-width: 1190px) {
+  .P1,.P2{
+    height:330px;
+  }
+}
+
+@media only screen and (max-width: 769px) {
+  .P1,.P2{
+    height:440px;
+  }
+}
+
+
 @media only screen and (max-width: 580px) {
   #header{
   font-size: 30px;
