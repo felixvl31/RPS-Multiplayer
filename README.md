@@ -4,6 +4,8 @@ Rock-Paper-Scissor Multiplayer
 ## Description  
 Rock-Paper-Scissors multiplayer game hosted on Firebase  
 ***
+![Demo](./assets/demo/RPS.png)
+***
 ## Notes
 * Two players needed
 * Non players can see results and use the chat too 
